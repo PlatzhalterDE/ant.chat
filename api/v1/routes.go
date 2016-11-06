@@ -1,12 +1,14 @@
-package api
+package routes
 
 import (
-    "fmt"
     "net/http"
     "encoding/json"
 
     "github.com/PlatzhalterDE/ant.chat/models"
+    "github.com/PlatzhalterDE/ant.chat/lib/log"
 )
+
+const TAG = "ROUTES"
 
 type Route struct {
     Name        string
@@ -28,7 +30,7 @@ func GetRoutes() Routes {
 }
 
 func DhtIndexGet(writer http.ResponseWriter, request *http.Request) {
-    fmt.Println("[ GET ] /api/v1/dht")
+    log.I(TAG, "/api/v1/dht [GET]")
 
     clients := models.Clients {
         models.Client { "asdf" },

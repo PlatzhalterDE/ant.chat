@@ -1,4 +1,4 @@
-package lib
+package cert
 
 import (
 	"crypto/ecdsa"
@@ -91,11 +91,7 @@ func GenerateKeyPair(host string) (string, string) {
     return string(certOut), string(keyOut)
 }
 
-func WriteToFileIfNotExists(cert, key string) error {
-    if FilesExist() {
-        return nil
-    }
-
+func WriteToFile(cert, key string) error {
     certErr := ioutil.WriteFile("." + pathSep + "certs" + pathSep + "cert.pem", []byte(cert), 0600)
 
     if certErr != nil {
